@@ -1,1 +1,13 @@
 *out*
+.*
+bin/*
+lib/*
+include/*
+share/*
+*.a
+*.la
+*.lo
+*.o
+*.so
+*.so.*
+*.dylib

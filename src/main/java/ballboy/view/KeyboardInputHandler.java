@@ -12,10 +12,12 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-class KeyboardInputHandler{
+class KeyboardInputHandler {
     private final GameEngine model;
     private boolean left = false;
     private boolean right = false;
+    private boolean up = false;
+    private boolean down = false;
     private Set<KeyCode> pressedKeys = new HashSet<>();
 
     private Map<String, MediaPlayer> sounds = new HashMap<>();
@@ -48,17 +50,28 @@ class KeyboardInputHandler{
 
         if (keyEvent.getCode().equals(KeyCode.LEFT)) {
             left = true;
-        }
-        else if (keyEvent.getCode().equals(KeyCode.RIGHT)) {
+        } else if (keyEvent.getCode().equals(KeyCode.RIGHT)) {
             right = true;
+        } else if (keyEvent.getCode().equals(KeyCode.UP)) {
+            up = true;
+        } else if (keyEvent.getCode().equals(KeyCode.DOWN)) {
+            down = true;
         } else {
             return;
         }
 
         if (left) {
+            System.out.println("MOVE LEFT");
             model.moveLeft();
-        } else {
+        } else if (right) {
+            System.out.println("MOVE RIGHT");
             model.moveRight();
+        } else if (up) {
+            System.out.println("MOVE UP");
+            model.boostHeight();
+        } else if (down) {
+            System.out.println("MOVE DOWN");
+            model.dropHeight();
         }
     }
 
@@ -67,9 +80,12 @@ class KeyboardInputHandler{
 
         if (keyEvent.getCode().equals(KeyCode.LEFT)) {
             left = false;
-        }
-        else if (keyEvent.getCode().equals(KeyCode.RIGHT)) {
+        } else if (keyEvent.getCode().equals(KeyCode.RIGHT)) {
             right = false;
+        } else if (keyEvent.getCode().equals(KeyCode.UP)) {
+            up = false;
+        } else if (keyEvent.getCode().equals(KeyCode.DOWN)) {
+            down = false;
         } else {
             return;
         }

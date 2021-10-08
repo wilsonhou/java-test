@@ -25,7 +25,7 @@ public class BlockedBackground implements BackgroundDrawer {
         sky.setViewOrder(1000.0);
 
         floor = new Rectangle(0, floorHeight, width, height - floorHeight);
-        floor.setFill(Paint.valueOf("GREEN"));
+        floor.setFill(Paint.valueOf("PINK"));
         floor.setViewOrder(1000.0);
 
         pane.getChildren().addAll(sky, floor);

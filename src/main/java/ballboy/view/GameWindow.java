@@ -3,6 +3,7 @@ package ballboy.view;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import ballboy.model.Entity;
@@ -30,16 +31,14 @@ public class GameWindow {
         scene = new Scene(pane, width, height);
 
         entityViews = new ArrayList<>();
-//
+        //
         KeyboardInputHandler keyboardInputHandler = new KeyboardInputHandler(model);
-//
+        //
         scene.setOnKeyPressed(keyboardInputHandler::handlePressed);
         scene.setOnKeyReleased(keyboardInputHandler::handleReleased);
-//
+        //
         backgroundDrawer = new BlockedBackground();
-//
-        // TODO: Implement Model Properly
-//        backgroundDrawer.draw(model, pane);
+        backgroundDrawer.draw(model, pane);
     }
 
     public Scene getScene() {
@@ -47,8 +46,9 @@ public class GameWindow {
     }
 
     public void run() {
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(17),
-                t -> this.draw()));
+        // Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000), t ->
+        // this.draw()));
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(17), t -> this.draw()));
 
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
@@ -59,7 +59,7 @@ public class GameWindow {
 
         List<Entity> entities = model.getCurrentLevel().getEntities();
 
-        for (EntityView entityView: entityViews) {
+        for (EntityView entityView : entityViews) {
             entityView.markForDelete();
         }
 
@@ -80,9 +80,9 @@ public class GameWindow {
         // We'll never move up and down, will we?
         backgroundDrawer.update(xViewportOffset, 0);
 
-        for (Entity entity: entities) {
+        for (Entity entity : entities) {
             boolean notFound = true;
-            for (EntityView view: entityViews) {
+            for (EntityView view : entityViews) {
                 if (view.matchesEntity(entity)) {
                     notFound = false;
                     view.update(xViewportOffset, 0);
@@ -96,7 +96,7 @@ public class GameWindow {
             }
         }
 
-        for (EntityView entityView: entityViews) {
+        for (EntityView entityView : entityViews) {
             if (entityView.isMarkedForDelete()) {
                 pane.getChildren().remove(entityView.getNode());
             }

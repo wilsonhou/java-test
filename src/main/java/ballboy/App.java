@@ -23,18 +23,18 @@ public class App extends Application {
 
         String s = "Java 11 sanity check";
         if (s.isBlank()) {
-            throw new IllegalStateException("You must be running Java 11+. You won't ever see this exception though" +
-                    " as your code will fail to compile on Java 10 and below.");
+            throw new IllegalStateException("You must be running Java 11+. You won't ever see this exception though"
+                    + " as your code will fail to compile on Java 10 and below.");
         }
 
-        GameEngine model = new GameEngineImpl("default.json");
-        GameWindow window = new GameWindow(model, 640, 400);
-//        window.run();
-//
-//        primaryStage.setTitle("Ballboy");
-//        primaryStage.setScene(window.getScene());
-//        primaryStage.show();
-//
-//        window.run();
+        GameEngine model = new GameEngineImpl("config.json");
+        GameWindow window = new GameWindow(model, 640, 500);
+        window.run();
+
+        primaryStage.setTitle("Ballboy");
+        primaryStage.setScene(window.getScene());
+        primaryStage.show();
+
+        window.run();
     }
 }
