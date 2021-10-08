@@ -36,7 +36,7 @@ public class Ballboy extends MoveableEntity {
   public Ballboy(double xPos, double yPos, String size, Level level, double xVel, double yVel) {
     super(IMAGE_PATH, xPos, yPos, SIZES.get(size).get("width"), SIZES.get(size).get("height"), Layer.FOREGROUND, level);
 
-    this.setMovement(new Bounce(this));
+    this.setMovement(new BallboyMovement(this));
     this.setYVelocity(yVel);
     this.setXVelocity(xVel);
     this.startingXPos = xPos;
@@ -55,13 +55,13 @@ public class Ballboy extends MoveableEntity {
   @Override
   public void collide(Entity entity) {
     if (entity instanceof Enemy) {
-      System.out.println("Collision with enemy");
+      System.out.println("Ow...");
       resetToStart.onCollision();
     } else if (entity instanceof FinishingObject) {
       System.out.println("YOU WIN!");
       resetToStart.onCollision();
     } else {
-      System.out.println("Collision with RANDOM");
+      System.out.println("Boing!");
       collision.onCollision();
     }
   }

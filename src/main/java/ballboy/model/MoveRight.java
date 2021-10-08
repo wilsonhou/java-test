@@ -15,5 +15,6 @@ public class MoveRight implements Movement {
     if (entity.getXPos() + entity.getWidth() < level.getLevelWidth()) {
       entity.setXPos(entity.getXPos() + entity.getXVelocity());
     }
+
   }
 }

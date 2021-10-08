@@ -1,13 +1,13 @@
 package ballboy.model;
 
-public class Bounce implements Movement {
+public class BallboyMovement implements Movement {
 
   private MoveableEntity entity;
   private Level level;
   private double maxY;
   private double floorY;
 
-  public Bounce(MoveableEntity entity) {
+  public BallboyMovement(MoveableEntity entity) {
     this.entity = entity;
     this.level = entity.getLevel();
     this.maxY = 200;
@@ -26,6 +26,5 @@ public class Bounce implements Movement {
 
     // update the entity's position
     entity.setYPos(entity.getYPos() + entity.getYVelocity());
-
   }
 }

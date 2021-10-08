@@ -15,8 +15,8 @@ public abstract class MoveableEntity extends EntityImpl {
 
     // Set Defaults
     this.movement = new LeftToRight(this);
-    this.xVelocity = 0;
-    this.yVelocity = 0;
+    this.xVelocity = 0.0;
+    this.yVelocity = 0.0;
 
     this.collision = new ReverseCollision(this);
 

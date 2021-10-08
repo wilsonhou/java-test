@@ -11,3 +11,4 @@ share/*
 *.so
 *.so.*
 *.dylib
+.gradle

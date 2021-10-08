@@ -61,16 +61,12 @@ class KeyboardInputHandler {
         }
 
         if (left) {
-            System.out.println("MOVE LEFT");
             model.moveLeft();
         } else if (right) {
-            System.out.println("MOVE RIGHT");
             model.moveRight();
         } else if (up) {
-            System.out.println("MOVE UP");
             model.boostHeight();
         } else if (down) {
-            System.out.println("MOVE DOWN");
             model.dropHeight();
         }
     }

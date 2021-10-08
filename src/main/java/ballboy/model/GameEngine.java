@@ -6,6 +6,7 @@ package ballboy.model;
 public interface GameEngine {
     /**
      * Return the currently loaded level
+     * 
      * @return The current level
      */
     Level getCurrentLevel();
@@ -18,8 +19,11 @@ public interface GameEngine {
     // Hero inputs - boolean for success (possibly for sound feedback)
     // These may just be passed straight through to the hero
     boolean boostHeight();
+
     boolean dropHeight();
+
     boolean moveLeft();
+
     boolean moveRight();
 
     /**
